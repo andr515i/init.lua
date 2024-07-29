@@ -19,9 +19,7 @@ return {
     "github/copilot.vim",
     lazy = false,
     config = function()
-      vim.g.copilot_no_tab_map = true
-      vim.g_copilot_assume_mapped = true
-      vim.g_copilot_tab_fallback = ""
+      vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true, noremap = true })
     end,
   },
   -- change trouble config

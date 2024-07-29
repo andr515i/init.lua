@@ -76,5 +76,3 @@ wk.add({
   { "<Esc><Esc>", "<C-\\><C-n>" },
   { "<leader>s", vim.cmd.write },
 })
-
-vim.api.nvim_set_keymap("i", "<tab>", 'copilot#Accept("<CR>")', { expr = true, silent = true, noremap = true })
