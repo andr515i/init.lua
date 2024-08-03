@@ -2,16 +2,28 @@
 -- * add extra plugins
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
-print("testestt")
 return {
-  -- add gruvbox
+  {
+    "Kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {},
+    -- keybindings
+    -- ys<motion><delimiter> (add surround)
+    -- cs<old delimiter><new delimiter> (change surround)
+    -- ds<delimiter> (delete surround)
+    -- S (visual mode add surround)
+    -- cst (change surround html tag)
+    -- dst (delete surround html tag)
+    -- ysf, csf, csf for functions
+  },
   { "ellisonleao/gruvbox.nvim" },
   { "andweeb/presence.nvim" },
-  -- Configure LazyVim to load gruvbox
+  { "EdenEast/nightfox.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "Carbonfox",
     },
   },
 
@@ -22,9 +34,17 @@ return {
       vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true, noremap = true })
     end,
   },
-  -- change trouble config
-  -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
+
+  {
+    "folke/trouble.nvim",
+    enabled = true,
+    cmd = { "TroubleToggle", "Trouble" },
+    keys = {
+      { "<leader>xX", "<cmd>TroubleToggle workspace_diagnotistcs<cr>", desc = "Trouble: Workspace Diagnostics" },
+      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble: Document Diagnostics" },
+      { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble: Quickfix" },
+    },
+  },
 
   -- override nvim-cmp and add cmp-emoji
   {

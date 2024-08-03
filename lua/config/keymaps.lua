@@ -42,7 +42,8 @@ vim.keymap.set(
 )
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-vim.keymap.set({ "n", "v" }, "<leader>s", vim.cmd.write, { desc = "Save file" })
+
+vim.keymap.set("n", "<leader>s", "<Plug>nvim-surround-normal", { desc = "Surround normal mode" })
 
 -- which-key shenanigans
 local wk = require("which-key")
