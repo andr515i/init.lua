@@ -1,0 +1,10 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.coding.blink",
+    "lazyvim.plugins.extras.lang.php"
+  ],
+  "news": {
+    "NEWS.md": "10960"
+  },
+  "version": 7
+}
