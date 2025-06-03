@@ -6,4 +6,6 @@ return {
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
+    lazy = true,
+    ft = "markdown",
 }

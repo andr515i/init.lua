@@ -5,12 +5,16 @@
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.scrolloff = 12
+vim.opt.scrolloff = 18
 
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+
+-- set leader to space
+vim.g.mapleader = " "
+vim.g.maplocalleader = "#"
 
 -- vim.opt.linebreak = true
 vim.opt.breakindent = true
@@ -39,5 +43,5 @@ vim.g.rustaceanvim = {
     },
 }
 
---disable mouse
--- vim.opt.mouse = ""
+-- change ; to : for faster command execution
+vim.keymap.set({ "n", "v" }, ";", ":", { noremap = true, silent = true })
