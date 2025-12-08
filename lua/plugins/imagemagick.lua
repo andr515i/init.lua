@@ -4,5 +4,6 @@ return {
     dependencies = {
         "kiyoon/magick.nvim",
     },
+    ft = { "markdown", "typst", "neorg" },
     opts = {},
 }

@@ -2,28 +2,20 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    ---@type snacks.Config
+
     opts = {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
         bigfile = { enabled = true },
         dashboard = { enabled = true },
-        explorer = {
-            enabled = false,
-        },
+        explorer = { enabled = false },
         indent = { enabled = true },
         input = { enabled = true },
-        picker = {
-            enabled = true,
-        },
-
+        picker = { enabled = true },
         notifier = { enabled = true },
         quickfile = { enabled = true },
         scope = { enabled = true },
         scroll = { enabled = false },
         statuscolumn = { enabled = true },
-        words = { enabled = true },
+        words = { enabled = false },
         images = {
             enabled = true,
             float = true,
@@ -31,6 +23,16 @@ return {
             env = { SNACKS_KITTY = true },
         },
     },
+
+    config = function(_, opts)
+        require("snacks").setup(opts)
+
+        -- make the picker text use your Normal fg (usually white)
+        local set_hl = vim.api.nvim_set_hl
+        set_hl(0, "SnacksPickerDesc", { link = "Normal" })
+        set_hl(0, "SnacksPickerText", { link = "Normal" })
+    end,
+
     layouts = {
         select = {
             backdrop = false,
@@ -40,7 +42,12 @@ return {
             height = 0.8,
             border = "none",
             box = "vertical",
-            { win = "preview", title = "{preview}", height = 0.4, border = "rounded" },
+            {
+                win = "preview",
+                title = "{preview}",
+                height = 0.4,
+                border = "rounded",
+            },
             {
                 box = "vertical",
                 border = "rounded",
@@ -51,27 +58,49 @@ return {
             },
         },
     },
+
     keys = {
-        {
-            "<leader>E",
-            function()
-                require("snacks").explorer()
-            end,
-            desc = "open snacks explorer",
-        },
-        {
-            "<leader>gb",
-            function()
-                require("snacks").picker.git_branches({ layout = "select" })
-            end,
-            desc = "pick git branch",
-        },
         {
             "<leader>fk",
             function()
-                require("snacks").picker.keymaps({})
+                local Snacks = require("snacks")
+
+                Snacks.picker.keymaps({
+                    format = function(item)
+                        local k = item.item
+                        local a = Snacks.picker.util.align
+                        local ret = {}
+
+                        -- icon
+                        local icon = " "
+                        local icon_hl
+                        if package.loaded["which-key"] then
+                            local Icons = require("which-key.icons")
+                            local i, hl = Icons.get({ keymap = k, desc = k.desc })
+                            if i then
+                                icon, icon_hl = i, hl
+                            end
+                        end
+                        ret[#ret + 1] = { a(icon, 3), icon_hl }
+
+                        -- mode
+                        ret[#ret + 1] = { " " }
+                        ret[#ret + 1] = { k.mode, "SnacksPickerKeymapMode" }
+
+                        -- lhs
+                        local lhs = Snacks.util.normkey(k.lhs)
+                        ret[#ret + 1] = { " " }
+                        ret[#ret + 1] = { a(lhs, 15), "SnacksPickerKeymapLhs" }
+
+                        -- desc
+                        ret[#ret + 1] = { " " }
+                        ret[#ret + 1] = { k.desc or "", "SnacksPickerDesc" }
+
+                        return ret
+                    end,
+                })
             end,
-            desc = "show and pick keymaps",
+            desc = "Show keymaps (icon, mode, lhs, desc)",
         },
     },
 }

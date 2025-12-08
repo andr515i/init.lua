@@ -18,12 +18,12 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
 
 -- keybinds to quickly start and stop language specific projects
 
--- vim.api.nvim_create_autocmd("FileType", {
---     pattern = { "rust" },
---     callback = function()
---         vim.keymap.set("n", "<leader>r", ":term cargo run<CR>", { noremap = true, silent = true })
---     end,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "rust" },
+    callback = function()
+        vim.lsp.inlay_hint.enable(false)
+    end,
+})
 
 -- vim.api.nvim_create_autocmd("FileType", {
 --     pattern = { "python" },

@@ -7,9 +7,15 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.scrolloff = 18
 
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undolevels = 1000
 vim.opt.undofile = true
 
 -- set leader to space
@@ -26,22 +32,21 @@ vim.diagnostic.config({
     underline = { severity = { min = vim.diagnostic.severity.ERROR } },
 })
 
-vim.g.rustaceanvim = {
-    server = {
-        cmd = function()
-            local mason_registry = require("mason-registry")
-            if mason_registry.is_installed("rust-analyzer") then
-                -- This may need to be tweaked depending on the operating system.
-                local ra = mason_registry.get_package("rust-analyzer")
-                local ra_filename = ra:get_receipt():get().links.bin["rust-analyzer"]
-                return { ("%s/%s"):format(ra:get_install_path(), ra_filename or "rust-analyzer") }
-            else
-                -- global installation
-                return { "rust-analyzer" }
-            end
-        end,
-    },
-}
+-- vim.g.rustaceanvim = {
+--     server = {
+--         cmd = function()
+--             local mason_registry = require("mason-registry")
+--             if mason_registry.is_installed("rust-analyzer") then
+--                 -- This may need to be tweaked depending on the operating system.
+--                 local ra = mason_registry.get_package("rust-analyzer")
+--                 local ra_filename = ra:get_receipt():get().links.bin["rust-analyzer"]
+--                 return { ("%s/%s"):format(ra:get_install_path(), ra_filename or "rust-analyzer") }
+--             else
+--                 -- global installation
+--                 return { "rust-analyzer" }
+--             end
+--         end,
+--     },
+-- }
 
--- change ; to : for faster command execution
-vim.keymap.set({ "n", "v" }, ";", ":", { noremap = true, silent = true })
+-- vim.loader.enable()

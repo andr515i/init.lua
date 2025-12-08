@@ -4,3 +4,5 @@ return {
         colorscheme = "dark_horizon",
     },
 }
+
+-- test

@@ -1,5 +1,5 @@
 return {
-    "echasnovski/mini.splitjoin",
+    "nvim-mini/mini.splitjoin",
     config = function()
         local sj = require("mini.splitjoin")
         sj.setup({
