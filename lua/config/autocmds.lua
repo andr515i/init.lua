@@ -24,7 +24,43 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.lsp.inlay_hint.enable(false)
     end,
 })
-
+-- i dont use this, because i know how to save my files.
+-- local group = vim.api.nvim_create_augroup("AutoFormatAndSave", { clear = true })
+--
+-- vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "FocusLost", "BufLeave" }, {
+--     group = group,
+--     callback = function(args)
+--         local buf = args.buf
+--
+--         -- Skip unwanted buffer types (neo-tree, help, terminals, etc.)
+--         if vim.bo[buf].buftype ~= "" then
+--             return
+--         end
+--
+--         -- Skip unnamed buffers
+--         if vim.api.nvim_buf_get_name(buf) == "" then
+--             return
+--         end
+--
+--         -- Skip not modifiable or readonly
+--         if vim.bo[buf].readonly or not vim.bo[buf].modifiable then
+--             return
+--         end
+--
+--         -- Skip if nothing changed
+--         if not vim.bo[buf].modified then
+--             return
+--         end
+--
+--         -- Run LazyVim's formatter (Conform)
+--         -- Silent async call
+--         vim.cmd("silent! LazyFormat")
+--
+--         -- Save buffer
+--
+--         vim.cmd("silent! write")
+--     end,
+-- })
 -- vim.api.nvim_create_autocmd("FileType", {
 --     pattern = { "python" },
 --     callback = function()

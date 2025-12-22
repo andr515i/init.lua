@@ -90,3 +90,19 @@ set("n", "<c-u>", "22kzz", { desc = "move up 22 lines", noremap = true })
 set("n", "<M-d>", function()
     require("copilot.suggestion").toggle_auto_trigger()
 end, { noremap = true, desc = "Copilot: toggle auto trigger" })
+
+local ls = require("luasnip")
+
+-- forward
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
+    if ls.expand_or_jumpable() then
+        ls.expand_or_jump()
+    end
+end, { silent = true })
+
+-- backward
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
+    if ls.jumpable(-1) then
+        ls.jump(-1)
+    end
+end, { silent = true })

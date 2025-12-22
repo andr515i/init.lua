@@ -14,7 +14,7 @@ vim.opt.incsearch = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- this doesnt work on normal windows machines, as they dont have a home variable...
 vim.opt.undolevels = 1000
 vim.opt.undofile = true
 
