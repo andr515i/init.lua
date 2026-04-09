@@ -24,6 +24,11 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.lsp.inlay_hint.enable(false)
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown" },
+    command = "setlocal nospell",
+})
 -- i dont use this, because i know how to save my files.
 -- local group = vim.api.nvim_create_augroup("AutoFormatAndSave", { clear = true })
 --

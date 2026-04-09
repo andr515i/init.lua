@@ -22,6 +22,8 @@ vim.opt.undofile = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "#"
 
+vim.opt.spell = false
+
 -- vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.wo.wrap = true
@@ -50,3 +52,10 @@ vim.diagnostic.config({
 -- }
 
 -- vim.loader.enable()
+
+vim.api.nvim_create_user_command("ReloadChromo", function()
+    package.loaded["user.themes.chromognomev2"] = nil
+    package.loaded["user.themes.chromognomev2.theme"] = nil
+    package.loaded["user.themes.chromognomev2.palette"] = nil
+    vim.cmd.colorscheme("chromognome")
+end, {})

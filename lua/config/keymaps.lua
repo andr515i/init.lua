@@ -106,3 +106,5 @@ vim.keymap.set({ "i", "s" }, "<C-k>", function()
         ls.jump(-1)
     end
 end, { silent = true })
+
+set({ "n" }, "X", "xp", { desc = "move current char one right" })

@@ -1,7 +1,8 @@
 return {
     "LazyVim/LazyVim",
     opts = {
-        colorscheme = "dark_horizon",
+        -- colorscheme = "dark_horizon",
+        colorscheme = "chromognome",
     },
 }
 
