@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "*/kitty.conf",
     command = "silent !kill -SIGUSR1 $(pgrep -a kitty)",
 })
+
 vim.api.nvim_create_autocmd("DiagnosticChanged", {
     callback = function()
         vim.diagnostic.setqflist({
@@ -25,10 +26,10 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "markdown" },
-    command = "setlocal nospell",
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = { "markdown" },
+--     command = "setlocal nospell",
+-- })
 -- i dont use this, because i know how to save my files.
 -- local group = vim.api.nvim_create_augroup("AutoFormatAndSave", { clear = true })
 --
