@@ -32,6 +32,10 @@ return {
             score_offset = 20, -- tweak this up/down until it feels right
         })
 
+        -- Avoid CodeSnap / blink native fuzzy .so conflict
+        opts.fuzzy = opts.fuzzy or {}
+        opts.fuzzy.implementation = "lua"
+
         return opts
     end,
 }
