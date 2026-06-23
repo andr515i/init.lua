@@ -33,7 +33,7 @@ lazy.setup({
   },
 
   install = {
-    colorscheme = { "habamax" },
+    colorscheme = { "tokyonight" },
   },
 
   checker = {
