@@ -1,8 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
 local opt = vim.opt
-
+opt.cmdheight = 0
+opt.showmode = false
 opt.number = true
 opt.relativenumber = true
 
