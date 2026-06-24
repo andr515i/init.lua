@@ -1,10 +1,11 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 local opt = vim.opt
-opt.cmdheight = 0
+
+opt.laststatus = 3
 opt.showmode = false
-opt.number = true
-opt.relativenumber = true
+opt.ruler = false
+opt.cmdheight = 1
 
 opt.tabstop = 4
 opt.shiftwidth = 4
@@ -47,13 +48,13 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 
 opt.list = true
 opt.listchars = {
-  tab = "» ",
-  trail = "·",
-  nbsp = "␣",
+	tab = "» ",
+	trail = "·",
+	nbsp = "␣",
 }
 
 opt.fillchars = {
-  eob = " ",
+	eob = " ",
 }
 
-vim.cmd.colorscheme("chromozome")
+vim.cmd.colorscheme("chromognome")

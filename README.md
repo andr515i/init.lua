@@ -1,6 +1,6 @@
-Known weirdness:
-- On Windows Terminal / PowerShell, Neovim briefly rendered repeated lualine/status text in the lower buffer area.
-- File content was not actually modified.
-- Restart fixed it.
-- Suspects: cmdheight=0, Noice/cmdline UI, Windows Terminal redraw, or temporary statusline redraw bug.
-- If it returns: set cmdheight=1, disable Noice, restart, then retest.
+Known UI artifact:
+
+- Repeated lualine/statusline text can render in lower buffer area on Linux and Windows.
+- Not caused by Noice alone; happened with Noice disabled.
+- Not file corruption; buffer lines remained clean.
+- Parked for later investigation.
