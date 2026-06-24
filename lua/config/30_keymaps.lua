@@ -37,9 +37,8 @@ map("v", ".", ":normal .<CR>", opts("Repeat last normal command"))
 map("n", "X", "xp", opts("Transpose character forward"))
 
 -- Force system clipboard mappings.
--- Useful when clipboard provider/SSH behavior needs explicit control.
-map({ "n", "v" }, "<leader>y", [["+y]], opts("Yank to system clipboard"))
-map("n", "<leader>Y", [["+Y]], opts("Yank line to system clipboard"))
+map({ "n", "v" }, "y", [["+y]], opts("Yank to system clipboard"))
+map("n", "Y", [["+Y]], opts("Yank line to system clipboard"))
 
 -- Substitute word under cursor.
 map("n", "<A-s>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
