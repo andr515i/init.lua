@@ -1,11 +1,11 @@
 local map = vim.keymap.set
 
 local function opts(desc)
-  return {
-    noremap = true,
-    silent = true,
-    desc = desc,
-  }
+	return {
+		noremap = true,
+		silent = true,
+		desc = desc,
+	}
 end
 
 -- Search movement: keep cursor centered.
@@ -42,16 +42,16 @@ map("n", "Y", [["+Y]], opts("Yank line to system clipboard"))
 
 -- Substitute word under cursor.
 map("n", "<A-s>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
-  noremap = true,
-  silent = false,
-  desc = "Substitute word under cursor",
+	noremap = true,
+	silent = false,
+	desc = "Substitute word under cursor",
 })
 
 -- Substitute visual selection.
 map("v", "<A-s>", [["hy:%s/<C-r>h/<C-r>h/gI<Left><Left><Left>]], {
-  noremap = true,
-  silent = false,
-  desc = "Substitute selection",
+	noremap = true,
+	silent = false,
+	desc = "Substitute selection",
 })
 
 -- Add linebreak after each selected line.

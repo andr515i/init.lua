@@ -56,4 +56,4 @@ opt.fillchars = {
   eob = " ",
 }
 
-vim.cmd.colorscheme("habamax")
+vim.cmd.colorscheme("chromozome")
