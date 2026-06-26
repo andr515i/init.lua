@@ -310,5 +310,48 @@ return {
 			end,
 			desc = "LazyGit",
 		},
+
+		{
+			"<leader>fk",
+			function()
+				local Snacks = require("snacks")
+
+				Snacks.picker.keymaps({
+					format = function(item)
+						local k = item.item
+						local a = Snacks.picker.util.align
+						local ret = {}
+
+						-- icon
+						local icon = " "
+						local icon_hl
+						if package.loaded["which-key"] then
+							local Icons = require("which-key.icons")
+							local i, hl = Icons.get({ keymap = k, desc = k.desc })
+							if i then
+								icon, icon_hl = i, hl
+							end
+						end
+						ret[#ret + 1] = { a(icon, 3), icon_hl }
+
+						-- mode
+						ret[#ret + 1] = { " " }
+						ret[#ret + 1] = { k.mode, "SnacksPickerKeymapMode" }
+
+						-- lhs
+						local lhs = Snacks.util.normkey(k.lhs)
+						ret[#ret + 1] = { " " }
+						ret[#ret + 1] = { a(lhs, 15), "SnacksPickerKeymapLhs" }
+
+						-- desc
+						ret[#ret + 1] = { " " }
+						ret[#ret + 1] = { k.desc or "", "SnacksPickerDesc" }
+
+						return ret
+					end,
+				})
+			end,
+			desc = "Show keymaps (icon, mode, lhs, desc)",
+		},
 	},
 }

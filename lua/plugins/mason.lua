@@ -64,6 +64,11 @@ return {
 
 				-- C#
 				"csharpier",
+
+				-- Debug adapters
+				"codelldb",
+				"debugpy",
+				"netcoredbg",
 			},
 
 			auto_update = false,

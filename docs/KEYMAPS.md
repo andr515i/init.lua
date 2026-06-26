@@ -262,10 +262,12 @@ These mappings are buffer-local and only exist when an LSP is attached.
 
 ## Runner
 
-| Key          |   Mode | Action               |
-| ------------ | -----: | -------------------- |
-| `<leader>rr` | Normal | Run project          |
-| `<leader>rf` | Normal | Run current file     |
-| `<leader>rt` | Normal | Run tests            |
-| `<leader>rs` | Normal | Stop runner          |
-| `<leader>ro` | Normal | Toggle runner output |
+| Key          |   Mode | Action                       |
+| ------------ | -----: | ---------------------------- |
+| `<leader>rr` | Normal | Run project                  |
+| `<leader>rf` | Normal | Run current file             |
+| `<leader>rt` | Normal | Run tests                    |
+| `<leader>ri` | Normal | Run project in terminal      |
+| `<leader>rI` | Normal | Run current file in terminal |
+| `<leader>rs` | Normal | Stop runner                  |
+| `<leader>ro` | Normal | Toggle runner output         |
