@@ -55,40 +55,48 @@ local function has_value(list, value)
 end
 
 return {
-	"nvim-treesitter/nvim-treesitter",
-	branch = "main",
-	lazy = false,
-	build = ":TSUpdate",
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		lazy = false,
+		build = ":TSUpdate",
 
-	config = function()
-		vim.opt.runtimepath:append(install_dir)
+		config = function()
+			vim.opt.runtimepath:append(install_dir)
 
-		local ts = require("nvim-treesitter")
+			local ts = require("nvim-treesitter")
 
-		ts.setup({
-			install_dir = install_dir,
-		})
+			ts.setup({
+				install_dir = install_dir,
+			})
 
-		ts.install(parsers)
+			ts.install(parsers)
 
-		local group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true })
+			local group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true })
 
-		vim.api.nvim_create_autocmd("FileType", {
-			group = group,
-			callback = function(event)
-				local filetype = vim.bo[event.buf].filetype
-				local lang = vim.treesitter.language.get_lang(filetype)
+			vim.api.nvim_create_autocmd("FileType", {
+				group = group,
+				callback = function(event)
+					local filetype = vim.bo[event.buf].filetype
+					local lang = vim.treesitter.language.get_lang(filetype)
 
-				if not lang then
-					return
-				end
+					if not lang then
+						return
+					end
 
-				if not vim.tbl_contains(parsers, lang) then
-					return
-				end
+					if not vim.tbl_contains(parsers, lang) then
+						return
+					end
 
-				pcall(vim.treesitter.start, event.buf, lang)
-			end,
-		})
-	end,
+					pcall(vim.treesitter.start, event.buf, lang)
+				end,
+			})
+		end,
+	},
 }

@@ -5,25 +5,11 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 
-	init = function()
-		vim.g.lualine_laststatus = vim.o.laststatus
-
-		if vim.fn.argc(-1) > 0 then
-			-- Empty statusline until lualine loads.
-			vim.o.statusline = " "
-		else
-			-- Avoid statusline weirdness on starter/dashboard startup.
-			vim.o.laststatus = 0
-		end
-	end,
-
 	opts = function()
-		vim.o.laststatus = vim.g.lualine_laststatus or 3
-
 		return {
 			options = {
 				theme = "auto",
-				globalstatus = vim.o.laststatus == 3,
+				globalstatus = true,
 
 				component_separators = {
 					left = "│",

@@ -98,7 +98,6 @@ return {
 	},
 
 	config = function(_, opts)
-		vim.opt.cmdheight = 100
 		vim.opt.showmode = false
 		require("noice").setup(opts)
 	end,

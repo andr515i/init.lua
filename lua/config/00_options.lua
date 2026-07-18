@@ -1,5 +1,8 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = "#"
+
+vim.cmd.colorscheme("chromognome")
+
 local opt = vim.opt
 
 opt.laststatus = 3
@@ -53,8 +56,6 @@ opt.listchars = {
 	nbsp = "␣",
 }
 
-opt.fillchars = {
-	eob = " ",
-}
-
-vim.cmd.colorscheme("chromognome")
+opt.fillchars = { eob = " " }
+opt.relativenumber = true
+opt.number = true

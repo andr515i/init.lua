@@ -16,11 +16,19 @@ map("n", "N", "Nzzzv", opts("Previous search result"))
 map("n", "<C-d>", "<C-d>zz", opts("Half page down"))
 map("n", "<C-u>", "<C-u>zz", opts("Half page up"))
 
+-- full-page movement: keep cursor centered.
+map("n", "G", "Gzz", opts("Half page up"))
+
 -- Command mode ergonomics.
 map({ "n", "v" }, ";", ":", { noremap = true, silent = false, desc = "Command mode" })
 map({ "n", "v" }, "æ", ":", { noremap = true, silent = false, desc = "Command mode" })
 map({ "n", "v" }, "Æ", ":", { noremap = true, silent = false, desc = "Command mode" })
 
+-- Move lines up/down
+map("n", "<A-j>", "<cmd>move .+1<CR>==", opts("move line down"))
+map("n", "<A-k>", "<cmd>move .-2<CR>==", opts("move line up"))
+map("v", "<A-j>", ":move '>+1<CR>gv=gv", opts("move selection down"))
+map("v", "<A-k>", ":move '<-2<CR>gv=gv", opts("move selection up"))
 -- Terminal escape.
 map("t", "<Esc>", [[<C-\><C-n>]], opts("Exit terminal mode"))
 
@@ -33,8 +41,9 @@ map("n", "<leader>qc", "<cmd>cclose<CR>", opts("Close quickfix"))
 -- Better visual repeat.
 map("v", ".", ":normal .<CR>", opts("Repeat last normal command"))
 
--- Your old X = xp habit.
+-- habits.
 map("n", "X", "xp", opts("Transpose character forward"))
+map({ "n", "x", "t", "v" }, "¤", "$", opts("go to end of line on danish keyboard"))
 
 -- Force system clipboard mappings.
 map({ "n", "v" }, "y", [["+y]], opts("Yank to system clipboard"))

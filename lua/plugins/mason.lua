@@ -49,8 +49,7 @@ return {
 				"prettierd",
 
 				-- C/C++
-				"clang-format",
-				"cmake-format",
+				"cmakelang",
 
 				-- Python
 				"black",
